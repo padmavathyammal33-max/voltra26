@@ -1,0 +1,52 @@
+{
+  "team": [
+    {
+      "category": "Men's Team",
+      "event": "Cricket",
+      "winner": "Falcons",
+      "image": "/logos/falcons.jpeg"
+    },
+    {
+      "category": "Women's Team",
+      "event": "Handball",
+      "winner": "Spartans",
+      "image": "/logos/spartans.jpeg"
+    }
+  ],
+  "individual": {
+    "men": [
+      {
+        "event": "Badminton Singles",
+        "results": [
+          { "position": 1, "name": "Arjun Nair", "team": "Falcons" },
+          { "position": 2, "name": "Rahul Kumar", "team": "Titans" }
+        ]
+      },
+      {
+        "event": "Table Tennis Singles",
+        "results": [
+          { "position": 1, "name": "Vikram S", "team": "Spartans" },
+          { "position": 2, "name": "Aditya R", "team": "Falcons" }
+        ]
+      }
+    ],
+    "women": [
+      {
+        "event": "Badminton Singles",
+        "results": [
+          { "position": 1, "name": "Sneha S", "team": "Spartans" },
+          { "position": 2, "name": "Anjali P", "team": "Falcons" }
+        ]
+      }
+    ],
+    "mixed": [
+      {
+        "event": "Mixed Badminton",
+        "results": [
+          { "position": 1, "name": "Arjun & Sneha", "team": "Falcons" },
+          { "position": 2, "name": "Rahul & Anjali", "team": "Titans" }
+        ]
+      }
+    ]
+  }
+}
