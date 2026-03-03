@@ -22,8 +22,8 @@ async function getPoints(): Promise<Row[]> {
     .map((row) => row.split(","));
 
   return rows.map((row) => ({
-    Team: row[5],      // Column F
-    Points: row[6],    // Column G
+    Team: row[5],
+    Points: row[6],
   }));
 }
 
@@ -57,44 +57,70 @@ export default async function PointsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white px-4 sm:px-6 md:px-10 py-10">
-      <h1 className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-10 text-center">
-        📊 Points Table
-      </h1>
+    <div className="relative min-h-screen text-white">
 
-      <div className="max-w-3xl mx-auto space-y-6">
-        {leaderboard.map((team, index) => {
-          const logo = logoMap[team.team] || "/logos/default.png";
+      {/* Background Image */}
+      <Image
+        src="/points-bg.jpeg"
+        alt="Points Background"
+        fill
+        priority
+        className="object-cover -z-10"
+      />
 
-          return (
-            <div
-              key={team.team}
-              className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-5 flex items-center justify-between shadow-lg"
-            >
-              <div className="flex items-center gap-4">
-                <span className="text-2xl font-bold text-yellow-400">
-                  #{index + 1}
-                </span>
+      {/* Content Container */}
+      <div className="px-4 sm:px-6 md:px-10 py-12 bg-black/40 min-h-screen">
 
-                <Image
-                  src={logo}
-                  alt={team.team}
-                  width={50}
-                  height={50}
-                  className="rounded-full border border-gray-600"
-                />
+        <h1 className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-12 text-center">
+          📊 Points Table
+        </h1>
 
-                <span className="text-lg capitalize font-semibold">
-                  {team.team}
+        <div className="max-w-3xl mx-auto space-y-6">
+          {leaderboard.map((team, index) => {
+            const logo = logoMap[team.team] || "/logos/default.png";
+
+            const rankStyles = [
+              "bg-gradient-to-r from-yellow-600 to-yellow-400 shadow-[0_0_25px_rgba(255,215,0,0.6)]",
+              "bg-gradient-to-r from-gray-400 to-gray-200",
+              "bg-gradient-to-r from-amber-700 to-amber-500",
+            ];
+
+            const bgStyle =
+              index < 3
+                ? rankStyles[index]
+                : "bg-gradient-to-r from-gray-800 to-gray-900";
+
+            return (
+              <div
+                key={team.team}
+                className={`${bgStyle} rounded-xl p-5 flex items-center justify-between shadow-xl transition hover:scale-[1.02]`}
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-2xl font-bold">
+                    #{index + 1}
+                  </span>
+
+                  <Image
+                    src={logo}
+                    alt={team.team}
+                    width={50}
+                    height={50}
+                    className="rounded-full"
+                  />
+
+                  <span className="text-lg sm:text-xl capitalize font-bold">
+                    {team.team}
+                  </span>
+                </div>
+
+                <span className="text-xl sm:text-2xl font-extrabold">
+                  {team.total} pts
                 </span>
               </div>
+            );
+          })}
+        </div>
 
-              <span className="text-xl font-bold text-orange-400">
-                {team.total} pts
-              </span>
-            </div>
-          );
-        })}
       </div>
     </div>
   );
