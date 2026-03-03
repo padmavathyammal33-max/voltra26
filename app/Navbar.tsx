@@ -14,6 +14,7 @@ export default function Navbar() {
     { name: "Individual", path: "/winners/individual" },
     { name: "Points", path: "/points" },
     { name: "Events", path: "/events" },
+    { name: "Squads", path: "/squads" },
   ];
 
   return (
